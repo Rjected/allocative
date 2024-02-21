@@ -11,6 +11,7 @@
 
 mod anyhow;
 mod bumpalo;
+mod bytes;
 pub(crate) mod common;
 mod compact_str;
 mod dashmap;

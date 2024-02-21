@@ -19,6 +19,7 @@ compact_str = { version = "0.6.1", optional = true }
 dashmap = { version = "5.5.3", optional = true }
 either = { version = "1.8", optional = true }
 futures = { version = "0.3.24", optional = true }
+bytes = { git = "https://github.com/rjected/bytes", branch = "bytes-expose-data-ptr", optional = true }
 hashbrown = { version = "0.14.3", features = ["raw"], optional = true }
 indexmap = { version = "1.9.1", optional = true }
 num-bigint = { version = "0.4.3", optional = true }
@@ -37,3 +38,6 @@ triomphe = { version = "0.1.8", optional = true }
 
 [dev-dependencies]
 inferno = { version = "0.11.11", default-features = false }
+
+[features]
+default = ["bytes"]

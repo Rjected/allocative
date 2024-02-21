@@ -45,6 +45,7 @@ fn make_golden<T: Allocative>(value: &T) -> (String, String) {
         &mut flamegraph_svg,
     )
     .unwrap();
+
     let flamegraph_svg = String::from_utf8(flamegraph_svg).unwrap();
 
     let flamegraph = format!(
@@ -85,6 +86,8 @@ pub(crate) fn golden_test_impl<T: Allocative>(value: &T, type_name: &str) {
     let flamegraph_svg_path = format!("{manifest_dir}/src/{path}.svg");
 
     let (flamegraph, flamegraph_svg) = make_golden(value);
+    let regenerate_var = env::var(REGENERATE_VAR_NAME);
+    println!("regenerate_var: {:?}", regenerate_var);
     if env::var(REGENERATE_VAR_NAME).is_ok() {
         fs::write(flamegraph_src_path, &flamegraph).unwrap();
         fs::write(flamegraph_svg_path, flamegraph_svg).unwrap();
